@@ -3,16 +3,10 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.addColumn("tasks", "priority", {
-      type: Sequelize.DataTypes.ENUM(
-        "pending",
-        "started",
-        "onprogress",
-        "complete",
-        "notcomplete"
-      ),
+    await queryInterface.changeColumn("tasks", "priority", {
+      type: Sequelize.DataTypes.ENUM("low", "high", "normal"),
       allowNull: false, // Change allowNull to false if needed
-      defaultValue: "pending",
+      defaultValue: "normal",
     });
   },
 

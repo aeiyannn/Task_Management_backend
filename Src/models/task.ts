@@ -64,13 +64,12 @@ Task.init(
         },
         priority: {
             type: DataTypes.ENUM(
-                "pending",
-                "started",
-                "onprogress",
-                "complete",
-                "notcomplete"
+                "low",
+                "normal",
+                "high",
             ),
             allowNull: false,
+            defaultValue: 'normal'
         }
     },
     {
