@@ -1,4 +1,5 @@
 import express from 'express';
+import { Request, Response, NextFunction } from 'express';
 import bodyParser from 'body-parser';
 import authRoute from './Src/route/auth';
 import userRoute from './Src/route/user';
@@ -9,12 +10,9 @@ const app = express();
 const port = 3000;
 
 app.use(bodyParser.json());
-app.use(cors({
-  origin: 'http://localhost:3000',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204,
-}));
+app.use((req: Request, res: Response, next: NextFunction) => {
+  next();
+}, cors({ maxAge: 84600 }));
 
 app.use(express.json());
 
