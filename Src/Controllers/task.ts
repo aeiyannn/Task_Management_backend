@@ -159,11 +159,14 @@ export const getUserTask = async (req: Request, res: Response) => {
 
 export const getAllTask = async (req: Request, res: Response) => {
     try {
-        let alltasks = await Task.findAll()
+        let alltasks = await Task.findAll({
+            include: [{
+                model: User,
+                as: 'userInfo',
+                attributes: ['id', 'firstName', 'lastName', 'email']
+            }]
+        });
         res.status(200).json({ data: alltasks });
-
-
-
     }
     catch (error: any) {
         res.status(500).json({ error: error.message });
