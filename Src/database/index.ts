@@ -1,18 +1,31 @@
 // sequelize.js
 import { Sequelize } from 'sequelize';
-import Config from '../../config/database'
+import config from '../../config/database'
 
 const sequelize = new Sequelize(
-  Config.development.database,
-  Config.development.username,
-  Config.development.password,
+  config.development.database,
+  config.development.username,
+  config.development.password,
   {
-    host: Config.development.host,
-    dialect: "mysql",
-    // Additional options if required
+    host: config.development.host,
+    port: config.development.port ,
+    dialect:'mysql',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false, 
+      },
+      connectTimeout: 10000,  
+    },
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 60000,  
+      idle: 10000,
+    },
+    logging: console.log, 
   }
 );
-
 // Test the database connection
 sequelize
   .authenticate()
