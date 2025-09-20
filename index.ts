@@ -16,7 +16,7 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use((req: Request, res: Response, next: NextFunction) => {
   next();
-}, cors({ maxAge: 84600 }));
+}, cors({ origin: "*" }));
 
 app.use(express.json());
 
