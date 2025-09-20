@@ -16,7 +16,8 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use((req: Request, res: Response, next: NextFunction) => {
   next();
-}, cors({ origin: "*" }));
+});
+app.use(cors({ origin: "*" }));
 
 app.use(express.json());
 
