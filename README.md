@@ -146,6 +146,19 @@ Authorization: Bearer <your_jwt_token>
 
 ---
 
+## Swagger / OpenAPI
+
+A Swagger specification file is available at:
+
+- `swagger.json` (project root)
+
+You can import this file into:
+
+- [Swagger Editor](https://editor.swagger.io/)
+- Postman (Import -> File)
+
+---
+
 ## Project Structure
 
 ```
@@ -167,5 +180,6 @@ Authorization: Bearer <your_jwt_token>
 ├── index.ts                 # Application entry point
 ├── nodemon.json             # nodemon configuration
 ├── package.json
+├── swagger.json             # OpenAPI specification
 └── tsconfig.json
 ```
