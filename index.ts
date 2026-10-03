@@ -27,6 +27,10 @@ app.use(cors({ origin: '*' }));
 
 app.use(express.json());
 
+app.get('/api/docs', (req: Request, res: Response) => {
+  res.json(swaggerDocument);
+});
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/auth', authRoute);
@@ -35,5 +39,6 @@ app.use('/api', taskRoute);
 
 app.listen(port, () => {
   console.log(`Node.js running on port ${port}`);
-  console.log(`Swagger docs: http://localhost:${port}/api-docs`);
+  console.log(`Swagger JSON: http://localhost:${port}/api/docs`);
+  console.log(`Swagger UI: http://localhost:${port}/api-docs`);
 });
