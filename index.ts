@@ -1,4 +1,3 @@
-```ts
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -38,4 +37,3 @@ app.listen(port, () => {
   console.log(`Node.js running on port ${port}`);
   console.log(`Swagger docs: http://localhost:${port}/api-docs`);
 });
-```
